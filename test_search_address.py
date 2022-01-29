@@ -9,8 +9,14 @@ class MyTestCase(unittest.TestCase):
         expected = [
             "岩手県八幡平市八幡平温泉郷",
             "岩手県八幡平市松尾寄木",
-            "岩手県八幡平市松川温泉"]
+            "岩手県八幡平市松川温泉",
+        ]
         self.assertEqual(expected, actual)
+
+    def test_郵便番号が7桁以外(self):
+        actual = search_address("00")
+        expected = "郵便番号はハイフンなし7桁で入力してください"
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
