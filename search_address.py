@@ -5,9 +5,12 @@ def search_address(zipcode):
     url = f"https://zipcloud.ibsnet.co.jp/api/search?zipcode={zipcode}"
     response = requests.get(url)
     results = response.json()['results']
-    # print(response.json())
-    pref_name = results[0]['address1']
-    city_name = results[0]['address2']
-    town_name = results[0]['address3']
-    address = f"{pref_name}{city_name}{town_name}"
-    return address
+    print(response)
+
+    addresses = []
+    for r in results:
+        pref_name = r['address1']
+        city_name = r['address2']
+        town_name = r['address3']
+        addresses.append(f"{pref_name}{city_name}{town_name}")
+    return addresses
